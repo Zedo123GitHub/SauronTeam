@@ -8,5 +8,7 @@ namespace ConsoleApp1
 {
     class Learn
     {
+
+
     }
 }
