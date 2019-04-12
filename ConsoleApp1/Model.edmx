@@ -1,0 +1,1215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hackathon_danoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="recipe_0_orders_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="line_dd" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="production_order" Type="bigint" />
+          <Property Name="process_order_sap" Type="bigint" />
+          <Property Name="material_code" Type="bigint" />
+          <Property Name="recipe" Type="bigint" />
+          <Property Name="activation_date" Type="datetime" />
+          <Property Name="closing_date" Type="datetime" />
+          <Property Name="data_split" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recipe_0_out_semi_finished_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="bigbag_number" Type="int" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="datetime" />
+          <Property Name="bigbag_filling_duration" Type="float" />
+          <Property Name="bigbag_weight" Type="float" />
+          <Property Name="efficiency" Type="float" />
+          <Property Name="class" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="recipe_0_out_test_during_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="line_dd" Type="varchar(max)" />
+          <Property Name="process_order" Type="float" />
+          <Property Name="testing_time" Type="datetime" Nullable="false" />
+          <Property Name="moisture" Type="float" />
+          <Property Name="bulk_density" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_bigbag">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="bigbag_number" Type="int" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="datetime" />
+          <Property Name="sifter_speed_nominal_pct" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_dd">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="testing_time" Type="datetime" Nullable="false" />
+          <Property Name="steam_preasure" Type="float" />
+          <Property Name="dd_speed" Type="float" />
+          <Property Name="temp_out" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_slurry">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="slurry_process_order" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="slurry_process_order" Type="int" Nullable="false" />
+          <Property Name="slurry_line" Type="varchar(max)" />
+          <Property Name="slurry_start_time" Type="datetime" />
+          <Property Name="water_pct" Type="float" />
+          <Property Name="water_correction" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="recipe_0_raw_material_in">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="process_order_sap3" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="process_order_sap3" Type="int" Nullable="false" />
+          <Property Name="fat_pct" Type="float" />
+          <Property Name="particles_grp1" Type="float" />
+          <Property Name="particles_grp2" Type="float" />
+          <Property Name="particles_grp3" Type="float" />
+          <Property Name="moisture" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_0_raw_material_used">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="material_code_2" />
+            <PropertyRef Name="process_order_sap3" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="material_code_2" Type="int" Nullable="false" />
+          <Property Name="process_order_sap3" Type="int" Nullable="false" />
+          <Property Name="usage_pct" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_1_orders_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="production_order" Type="bigint" />
+          <Property Name="material_code" Type="bigint" />
+          <Property Name="recipe" Type="bigint" />
+          <Property Name="line_dd" Type="varchar(max)" />
+          <Property Name="data_split" Type="varchar" MaxLength="8" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recipe_1_out_semi_finished_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="bigbag_number" Type="int" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="datetime" />
+          <Property Name="bigbag_filling_duration" Type="float" />
+          <Property Name="bigbag_weight" Type="float" />
+          <Property Name="efficiency" Type="float" />
+          <Property Name="class" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="recipe_1_out_test_during_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="line_dd" Type="varchar(max)" />
+          <Property Name="process_order" Type="float" />
+          <Property Name="testing_time" Type="datetime" Nullable="false" />
+          <Property Name="moisture" Type="float" />
+          <Property Name="bulk_density" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_bigbag">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="bigbag_number" Type="int" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="datetime" />
+          <Property Name="sifter_speed_nominal_pct" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_dd">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="testing_time" Type="datetime" Nullable="false" />
+          <Property Name="steam_preasure" Type="float" />
+          <Property Name="dd_speed" Type="float" />
+          <Property Name="temp_out" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_slurry">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="slurry_process_order" />
+          </Key>
+          <Property Name="orders_details_id" Type="int" Nullable="false" />
+          <Property Name="slurry_process_order" Type="int" Nullable="false" />
+          <Property Name="slurry_line" Type="varchar(max)" />
+          <Property Name="slurry_start_time" Type="datetime" />
+          <Property Name="water_pct" Type="float" />
+          <Property Name="water_correction" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_1_raw_material_in">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="process_order_sap" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="process_order_sap" Type="int" Nullable="false" />
+          <Property Name="particles_grp1" Type="float" />
+          <Property Name="particles_grp2" Type="float" />
+          <Property Name="particles_grp3" Type="float" />
+          <Property Name="moisture" Type="float" />
+        </EntityType>
+        <EntityType Name="recipe_1_raw_material_used">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="material_code_2" />
+            <PropertyRef Name="process_order_sap" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="material_code_2" Type="int" Nullable="false" />
+          <Property Name="process_order_sap" Type="int" Nullable="false" />
+          <Property Name="vendor_batch" Type="varchar(max)" />
+          <Property Name="usage_pct" Type="float" />
+        </EntityType>
+        <EntityType Name="results_test_dataset">
+          <Key>
+            <PropertyRef Name="submission_id" />
+          </Key>
+          <Property Name="submission_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="recipe" Type="bigint" Nullable="false" />
+          <Property Name="team_name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="team_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="github_repository_url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="commit_hash" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="accuracy" Type="float" Nullable="false" />
+          <Property Name="RMSE" Type="float" Nullable="false" />
+          <Property Name="R2" Type="float" Nullable="false" />
+          <Property Name="created_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="last_modified" Type="datetime2" Precision="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'hackathon_danone.dbo.Walec DD02' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Walec DD02">
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="steam_pressure_at_the_inlet_of_regulation_unit" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_JetCooker" Type="float" />
+          <Property Name="setpoint_of_steam_pressure_at_the_DD_inlet" Type="float" />
+          <Property Name="steam_pressure_at_DD_inlet" Type="float" />
+          <Property Name="steam_pressure_at_the_outlet_of_regulation_unit" Type="float" />
+          <Property Name="condensate_temperature_at_DD_outlet" Type="float" />
+          <Property Name="product_temperature_at_the_inlet" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_product" Type="float" />
+          <Property Name="setpoint_of_product_temperature" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'hackathon_danone.dbo.Walec DD05' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Walec DD05">
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="steam_pressure_at_the_inlet_of_regulation_unit" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_JetCooker" Type="float" />
+          <Property Name="steam_pressure_at_DD_inlet" Type="float" />
+          <Property Name="condensate_temperature_at_DD_outlet" Type="float" />
+          <Property Name="setpoint_of_product_temperature" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_product" Type="float" />
+          <Property Name="steam_pressure_at_the_outlet_of_regulation_unit" Type="float" />
+          <Property Name="product_temperature_at_the_inlet" Type="float" />
+          <Property Name="setpoint_of_steam_pressure_at_the_DD_inlet" Type="float" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'hackathon_danone.dbo.Walec DD08' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Walec DD08">
+          <Property Name="timestamp" Type="datetime" />
+          <Property Name="steam_pressure_at_the_inlet_of_regulation_unit" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_JetCooker" Type="float" />
+          <Property Name="setpoint_of_steam_pressure_at_the_DD_inlet" Type="float" />
+          <Property Name="condensate_temperature_at_DD_outlet" Type="float" />
+          <Property Name="product_temperature_at_the_inlet" Type="float" />
+          <Property Name="setpoint_of_product_temperature" Type="float" />
+          <Property Name="product_at_the_outlet_of_JetCooker" Type="float" />
+          <Property Name="steam_pressure_at_the_inlet_of_JetCooker" Type="float" />
+          <Property Name="steam_pressure_at_the_outlet_of_regulation_unit" Type="float" />
+          <Property Name="product_temperature_at_the_outlet_of_product" Type="float" />
+        </EntityType>-->
+        <Association Name="fk_out_semi_finished_production">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_out_semi_finished_production" Type="Self.recipe_0_out_semi_finished_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_out_semi_finished_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_out_test_during_production">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_out_test_during_production" Type="Self.recipe_0_out_test_during_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_out_test_during_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_bigbag">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_bigbag" Type="Self.recipe_0_processing_details_bigbag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_bigbag">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_dd">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_dd" Type="Self.recipe_0_processing_details_dd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_dd">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_slurry">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_slurry" Type="Self.recipe_0_processing_details_slurry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_slurry">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_raw_material_used_id">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_raw_material_used" Type="Self.recipe_0_raw_material_used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_raw_material_used">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recipe_0_raw_material_in_recipe_0_orders_details_id">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_raw_material_in" Type="Self.recipe_0_raw_material_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_raw_material_in">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_out_semi_finished_production">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_out_semi_finished_production" Type="Self.recipe_1_out_semi_finished_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_out_semi_finished_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_out_test_during_production">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_out_test_during_production" Type="Self.recipe_1_out_test_during_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_out_test_during_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_bigbag">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_bigbag" Type="Self.recipe_1_processing_details_bigbag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_bigbag">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_dd">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_dd" Type="Self.recipe_1_processing_details_dd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_dd">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_slurry">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_slurry" Type="Self.recipe_1_processing_details_slurry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_slurry">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recipe_1_raw_material_in_recipe_1_orders_details_id">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_raw_material_in" Type="Self.recipe_1_raw_material_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_raw_material_in">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_raw_material_used_id">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_raw_material_used" Type="Self.recipe_1_raw_material_used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_raw_material_used">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hackathon_danoneModelStoreContainer">
+          <EntitySet Name="recipe_0_orders_details" EntityType="Self.recipe_0_orders_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_out_semi_finished_production" EntityType="Self.recipe_0_out_semi_finished_production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_out_test_during_production" EntityType="Self.recipe_0_out_test_during_production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_processing_details_bigbag" EntityType="Self.recipe_0_processing_details_bigbag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_processing_details_dd" EntityType="Self.recipe_0_processing_details_dd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_processing_details_slurry" EntityType="Self.recipe_0_processing_details_slurry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_raw_material_in" EntityType="Self.recipe_0_raw_material_in" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_0_raw_material_used" EntityType="Self.recipe_0_raw_material_used" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_orders_details" EntityType="Self.recipe_1_orders_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_out_semi_finished_production" EntityType="Self.recipe_1_out_semi_finished_production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_out_test_during_production" EntityType="Self.recipe_1_out_test_during_production" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_processing_details_bigbag" EntityType="Self.recipe_1_processing_details_bigbag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_processing_details_dd" EntityType="Self.recipe_1_processing_details_dd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_processing_details_slurry" EntityType="Self.recipe_1_processing_details_slurry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_raw_material_in" EntityType="Self.recipe_1_raw_material_in" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="recipe_1_raw_material_used" EntityType="Self.recipe_1_raw_material_used" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="results_test_dataset" EntityType="Self.results_test_dataset" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_out_semi_finished_production" Association="Self.fk_out_semi_finished_production">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_out_semi_finished_production" EntitySet="recipe_0_out_semi_finished_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_out_test_during_production" Association="Self.fk_out_test_during_production">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_out_test_during_production" EntitySet="recipe_0_out_test_during_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_bigbag" Association="Self.fk_processing_details_bigbag">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_bigbag" EntitySet="recipe_0_processing_details_bigbag" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_dd" Association="Self.fk_processing_details_dd">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_dd" EntitySet="recipe_0_processing_details_dd" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_slurry" Association="Self.fk_processing_details_slurry">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_slurry" EntitySet="recipe_0_processing_details_slurry" />
+          </AssociationSet>
+          <AssociationSet Name="fk_raw_material_used_id" Association="Self.fk_raw_material_used_id">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_raw_material_used" EntitySet="recipe_0_raw_material_used" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recipe_0_raw_material_in_recipe_0_orders_details_id" Association="Self.FK_recipe_0_raw_material_in_recipe_0_orders_details_id">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_raw_material_in" EntitySet="recipe_0_raw_material_in" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_out_semi_finished_production" Association="Self.fk_recipe_1_out_semi_finished_production">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_out_semi_finished_production" EntitySet="recipe_1_out_semi_finished_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_out_test_during_production" Association="Self.fk_recipe_1_out_test_during_production">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_out_test_during_production" EntitySet="recipe_1_out_test_during_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_bigbag" Association="Self.fk_recipe_1_processing_details_bigbag">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_bigbag" EntitySet="recipe_1_processing_details_bigbag" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_dd" Association="Self.fk_recipe_1_processing_details_dd">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_dd" EntitySet="recipe_1_processing_details_dd" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_slurry" Association="Self.fk_recipe_1_processing_details_slurry">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_slurry" EntitySet="recipe_1_processing_details_slurry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recipe_1_raw_material_in_recipe_1_orders_details_id" Association="Self.FK_recipe_1_raw_material_in_recipe_1_orders_details_id">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_raw_material_in" EntitySet="recipe_1_raw_material_in" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_raw_material_used_id" Association="Self.fk_recipe_1_raw_material_used_id">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_raw_material_used" EntitySet="recipe_1_raw_material_used" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hackathon_danoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="recipe_0_orders_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="line_dd" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="production_order" Type="Int64" />
+          <Property Name="process_order_sap" Type="Int64" />
+          <Property Name="material_code" Type="Int64" />
+          <Property Name="recipe" Type="Int64" />
+          <Property Name="activation_date" Type="DateTime" Precision="3" />
+          <Property Name="closing_date" Type="DateTime" Precision="3" />
+          <Property Name="data_split" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="recipe_0_out_semi_finished_production" Relationship="Self.fk_out_semi_finished_production" FromRole="recipe_0_orders_details" ToRole="recipe_0_out_semi_finished_production" />
+          <NavigationProperty Name="recipe_0_out_test_during_production" Relationship="Self.fk_out_test_during_production" FromRole="recipe_0_orders_details" ToRole="recipe_0_out_test_during_production" />
+          <NavigationProperty Name="recipe_0_processing_details_bigbag" Relationship="Self.fk_processing_details_bigbag" FromRole="recipe_0_orders_details" ToRole="recipe_0_processing_details_bigbag" />
+          <NavigationProperty Name="recipe_0_processing_details_dd" Relationship="Self.fk_processing_details_dd" FromRole="recipe_0_orders_details" ToRole="recipe_0_processing_details_dd" />
+          <NavigationProperty Name="recipe_0_processing_details_slurry" Relationship="Self.fk_processing_details_slurry" FromRole="recipe_0_orders_details" ToRole="recipe_0_processing_details_slurry" />
+          <NavigationProperty Name="recipe_0_raw_material_used" Relationship="Self.fk_raw_material_used_id" FromRole="recipe_0_orders_details" ToRole="recipe_0_raw_material_used" />
+          <NavigationProperty Name="recipe_0_raw_material_in" Relationship="Self.FK_recipe_0_raw_material_in_recipe_0_orders_details_id" FromRole="recipe_0_orders_details" ToRole="recipe_0_raw_material_in" />
+        </EntityType>
+        <EntityType Name="recipe_0_out_semi_finished_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_number" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="DateTime" Precision="3" />
+          <Property Name="bigbag_filling_duration" Type="Double" />
+          <Property Name="bigbag_weight" Type="Double" />
+          <Property Name="efficiency" Type="Double" />
+          <Property Name="class" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_out_semi_finished_production" FromRole="recipe_0_out_semi_finished_production" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_out_test_during_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="line_dd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="process_order" Type="Double" />
+          <Property Name="testing_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="moisture" Type="Double" />
+          <Property Name="bulk_density" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_out_test_during_production" FromRole="recipe_0_out_test_during_production" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_bigbag">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_number" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="DateTime" Precision="3" />
+          <Property Name="sifter_speed_nominal_pct" Type="Double" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_processing_details_bigbag" FromRole="recipe_0_processing_details_bigbag" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_dd">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="testing_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="steam_preasure" Type="Double" />
+          <Property Name="dd_speed" Type="Double" />
+          <Property Name="temp_out" Type="Double" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_processing_details_dd" FromRole="recipe_0_processing_details_dd" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_processing_details_slurry">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="slurry_process_order" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="slurry_process_order" Type="Int32" Nullable="false" />
+          <Property Name="slurry_line" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="slurry_start_time" Type="DateTime" Precision="3" />
+          <Property Name="water_pct" Type="Double" />
+          <Property Name="water_correction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_processing_details_slurry" FromRole="recipe_0_processing_details_slurry" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_raw_material_in">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="process_order_sap3" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="process_order_sap3" Type="Int32" Nullable="false" />
+          <Property Name="fat_pct" Type="Double" />
+          <Property Name="particles_grp1" Type="Double" />
+          <Property Name="particles_grp2" Type="Double" />
+          <Property Name="particles_grp3" Type="Double" />
+          <Property Name="moisture" Type="Double" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.FK_recipe_0_raw_material_in_recipe_0_orders_details_id" FromRole="recipe_0_raw_material_in" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_0_raw_material_used">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="material_code_2" />
+            <PropertyRef Name="process_order_sap3" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="material_code_2" Type="Int32" Nullable="false" />
+          <Property Name="process_order_sap3" Type="Int32" Nullable="false" />
+          <Property Name="usage_pct" Type="Double" />
+          <NavigationProperty Name="recipe_0_orders_details" Relationship="Self.fk_raw_material_used_id" FromRole="recipe_0_raw_material_used" ToRole="recipe_0_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_orders_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="production_order" Type="Int64" />
+          <Property Name="material_code" Type="Int64" />
+          <Property Name="recipe" Type="Int64" />
+          <Property Name="line_dd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="data_split" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="recipe_1_out_semi_finished_production" Relationship="Self.fk_recipe_1_out_semi_finished_production" FromRole="recipe_1_orders_details" ToRole="recipe_1_out_semi_finished_production" />
+          <NavigationProperty Name="recipe_1_out_test_during_production" Relationship="Self.fk_recipe_1_out_test_during_production" FromRole="recipe_1_orders_details" ToRole="recipe_1_out_test_during_production" />
+          <NavigationProperty Name="recipe_1_processing_details_bigbag" Relationship="Self.fk_recipe_1_processing_details_bigbag" FromRole="recipe_1_orders_details" ToRole="recipe_1_processing_details_bigbag" />
+          <NavigationProperty Name="recipe_1_processing_details_dd" Relationship="Self.fk_recipe_1_processing_details_dd" FromRole="recipe_1_orders_details" ToRole="recipe_1_processing_details_dd" />
+          <NavigationProperty Name="recipe_1_processing_details_slurry" Relationship="Self.fk_recipe_1_processing_details_slurry" FromRole="recipe_1_orders_details" ToRole="recipe_1_processing_details_slurry" />
+          <NavigationProperty Name="recipe_1_raw_material_in" Relationship="Self.FK_recipe_1_raw_material_in_recipe_1_orders_details_id" FromRole="recipe_1_orders_details" ToRole="recipe_1_raw_material_in" />
+          <NavigationProperty Name="recipe_1_raw_material_used" Relationship="Self.fk_recipe_1_raw_material_used_id" FromRole="recipe_1_orders_details" ToRole="recipe_1_raw_material_used" />
+        </EntityType>
+        <EntityType Name="recipe_1_out_semi_finished_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_number" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="DateTime" Precision="3" />
+          <Property Name="bigbag_filling_duration" Type="Double" />
+          <Property Name="bigbag_weight" Type="Double" />
+          <Property Name="efficiency" Type="Double" />
+          <Property Name="class" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_out_semi_finished_production" FromRole="recipe_1_out_semi_finished_production" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_out_test_during_production">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="line_dd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="process_order" Type="Double" />
+          <Property Name="testing_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="moisture" Type="Double" />
+          <Property Name="bulk_density" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_out_test_during_production" FromRole="recipe_1_out_test_during_production" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_bigbag">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="bigbag_number" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_number" Type="Int32" Nullable="false" />
+          <Property Name="bigbag_filling_time_end" Type="DateTime" Precision="3" />
+          <Property Name="sifter_speed_nominal_pct" Type="Double" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_processing_details_bigbag" FromRole="recipe_1_processing_details_bigbag" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_dd">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="testing_time" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="testing_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="steam_preasure" Type="Double" />
+          <Property Name="dd_speed" Type="Double" />
+          <Property Name="temp_out" Type="Double" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_processing_details_dd" FromRole="recipe_1_processing_details_dd" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_processing_details_slurry">
+          <Key>
+            <PropertyRef Name="orders_details_id" />
+            <PropertyRef Name="slurry_process_order" />
+          </Key>
+          <Property Name="orders_details_id" Type="Int32" Nullable="false" />
+          <Property Name="slurry_process_order" Type="Int32" Nullable="false" />
+          <Property Name="slurry_line" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="slurry_start_time" Type="DateTime" Precision="3" />
+          <Property Name="water_pct" Type="Double" />
+          <Property Name="water_correction" Type="Double" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_processing_details_slurry" FromRole="recipe_1_processing_details_slurry" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_raw_material_in">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="process_order_sap" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="process_order_sap" Type="Int32" Nullable="false" />
+          <Property Name="particles_grp1" Type="Double" />
+          <Property Name="particles_grp2" Type="Double" />
+          <Property Name="particles_grp3" Type="Double" />
+          <Property Name="moisture" Type="Double" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.FK_recipe_1_raw_material_in_recipe_1_orders_details_id" FromRole="recipe_1_raw_material_in" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="recipe_1_raw_material_used">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="material_code_2" />
+            <PropertyRef Name="process_order_sap" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="material_code_2" Type="Int32" Nullable="false" />
+          <Property Name="process_order_sap" Type="Int32" Nullable="false" />
+          <Property Name="vendor_batch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="usage_pct" Type="Double" />
+          <NavigationProperty Name="recipe_1_orders_details" Relationship="Self.fk_recipe_1_raw_material_used_id" FromRole="recipe_1_raw_material_used" ToRole="recipe_1_orders_details" />
+        </EntityType>
+        <EntityType Name="results_test_dataset">
+          <Key>
+            <PropertyRef Name="submission_id" />
+          </Key>
+          <Property Name="submission_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="recipe" Type="Int64" Nullable="false" />
+          <Property Name="team_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="team_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="github_repository_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="commit_hash" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="accuracy" Type="Double" Nullable="false" />
+          <Property Name="RMSE" Type="Double" Nullable="false" />
+          <Property Name="R2" Type="Double" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="last_modified" Type="DateTime" Precision="7" />
+        </EntityType>
+        <Association Name="fk_out_semi_finished_production">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_out_semi_finished_production" Type="Self.recipe_0_out_semi_finished_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_out_semi_finished_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_out_test_during_production">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_out_test_during_production" Type="Self.recipe_0_out_test_during_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_out_test_during_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_bigbag">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_bigbag" Type="Self.recipe_0_processing_details_bigbag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_bigbag">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_dd">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_dd" Type="Self.recipe_0_processing_details_dd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_dd">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_processing_details_slurry">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_processing_details_slurry" Type="Self.recipe_0_processing_details_slurry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_processing_details_slurry">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_raw_material_used_id">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_raw_material_used" Type="Self.recipe_0_raw_material_used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_raw_material_used">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recipe_0_raw_material_in_recipe_0_orders_details_id">
+          <End Role="recipe_0_orders_details" Type="Self.recipe_0_orders_details" Multiplicity="1" />
+          <End Role="recipe_0_raw_material_in" Type="Self.recipe_0_raw_material_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_0_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_0_raw_material_in">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_out_semi_finished_production">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_out_semi_finished_production" Type="Self.recipe_1_out_semi_finished_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_out_semi_finished_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_out_test_during_production">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_out_test_during_production" Type="Self.recipe_1_out_test_during_production" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_out_test_during_production">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_bigbag">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_bigbag" Type="Self.recipe_1_processing_details_bigbag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_bigbag">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_dd">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_dd" Type="Self.recipe_1_processing_details_dd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_dd">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_processing_details_slurry">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_processing_details_slurry" Type="Self.recipe_1_processing_details_slurry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_processing_details_slurry">
+              <PropertyRef Name="orders_details_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_recipe_1_raw_material_in_recipe_1_orders_details_id">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_raw_material_in" Type="Self.recipe_1_raw_material_in" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_raw_material_in">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_recipe_1_raw_material_used_id">
+          <End Role="recipe_1_orders_details" Type="Self.recipe_1_orders_details" Multiplicity="1" />
+          <End Role="recipe_1_raw_material_used" Type="Self.recipe_1_raw_material_used" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recipe_1_orders_details">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="recipe_1_raw_material_used">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="hackathonDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="recipe_0_orders_details" EntityType="Self.recipe_0_orders_details" />
+          <EntitySet Name="recipe_0_out_semi_finished_production" EntityType="Self.recipe_0_out_semi_finished_production" />
+          <EntitySet Name="recipe_0_out_test_during_production" EntityType="Self.recipe_0_out_test_during_production" />
+          <EntitySet Name="recipe_0_processing_details_bigbag" EntityType="Self.recipe_0_processing_details_bigbag" />
+          <EntitySet Name="recipe_0_processing_details_dd" EntityType="Self.recipe_0_processing_details_dd" />
+          <EntitySet Name="recipe_0_processing_details_slurry" EntityType="Self.recipe_0_processing_details_slurry" />
+          <EntitySet Name="recipe_0_raw_material_in" EntityType="Self.recipe_0_raw_material_in" />
+          <EntitySet Name="recipe_0_raw_material_used" EntityType="Self.recipe_0_raw_material_used" />
+          <EntitySet Name="recipe_1_orders_details" EntityType="Self.recipe_1_orders_details" />
+          <EntitySet Name="recipe_1_out_semi_finished_production" EntityType="Self.recipe_1_out_semi_finished_production" />
+          <EntitySet Name="recipe_1_out_test_during_production" EntityType="Self.recipe_1_out_test_during_production" />
+          <EntitySet Name="recipe_1_processing_details_bigbag" EntityType="Self.recipe_1_processing_details_bigbag" />
+          <EntitySet Name="recipe_1_processing_details_dd" EntityType="Self.recipe_1_processing_details_dd" />
+          <EntitySet Name="recipe_1_processing_details_slurry" EntityType="Self.recipe_1_processing_details_slurry" />
+          <EntitySet Name="recipe_1_raw_material_in" EntityType="Self.recipe_1_raw_material_in" />
+          <EntitySet Name="recipe_1_raw_material_used" EntityType="Self.recipe_1_raw_material_used" />
+          <EntitySet Name="results_test_dataset" EntityType="Self.results_test_dataset" />
+          <AssociationSet Name="fk_out_semi_finished_production" Association="Self.fk_out_semi_finished_production">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_out_semi_finished_production" EntitySet="recipe_0_out_semi_finished_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_out_test_during_production" Association="Self.fk_out_test_during_production">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_out_test_during_production" EntitySet="recipe_0_out_test_during_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_bigbag" Association="Self.fk_processing_details_bigbag">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_bigbag" EntitySet="recipe_0_processing_details_bigbag" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_dd" Association="Self.fk_processing_details_dd">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_dd" EntitySet="recipe_0_processing_details_dd" />
+          </AssociationSet>
+          <AssociationSet Name="fk_processing_details_slurry" Association="Self.fk_processing_details_slurry">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_processing_details_slurry" EntitySet="recipe_0_processing_details_slurry" />
+          </AssociationSet>
+          <AssociationSet Name="fk_raw_material_used_id" Association="Self.fk_raw_material_used_id">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_raw_material_used" EntitySet="recipe_0_raw_material_used" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recipe_0_raw_material_in_recipe_0_orders_details_id" Association="Self.FK_recipe_0_raw_material_in_recipe_0_orders_details_id">
+            <End Role="recipe_0_orders_details" EntitySet="recipe_0_orders_details" />
+            <End Role="recipe_0_raw_material_in" EntitySet="recipe_0_raw_material_in" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_out_semi_finished_production" Association="Self.fk_recipe_1_out_semi_finished_production">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_out_semi_finished_production" EntitySet="recipe_1_out_semi_finished_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_out_test_during_production" Association="Self.fk_recipe_1_out_test_during_production">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_out_test_during_production" EntitySet="recipe_1_out_test_during_production" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_bigbag" Association="Self.fk_recipe_1_processing_details_bigbag">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_bigbag" EntitySet="recipe_1_processing_details_bigbag" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_dd" Association="Self.fk_recipe_1_processing_details_dd">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_dd" EntitySet="recipe_1_processing_details_dd" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_processing_details_slurry" Association="Self.fk_recipe_1_processing_details_slurry">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_processing_details_slurry" EntitySet="recipe_1_processing_details_slurry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_recipe_1_raw_material_in_recipe_1_orders_details_id" Association="Self.FK_recipe_1_raw_material_in_recipe_1_orders_details_id">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_raw_material_in" EntitySet="recipe_1_raw_material_in" />
+          </AssociationSet>
+          <AssociationSet Name="fk_recipe_1_raw_material_used_id" Association="Self.fk_recipe_1_raw_material_used_id">
+            <End Role="recipe_1_orders_details" EntitySet="recipe_1_orders_details" />
+            <End Role="recipe_1_raw_material_used" EntitySet="recipe_1_raw_material_used" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hackathon_danoneModelStoreContainer" CdmEntityContainer="hackathonDB">
+          <EntitySetMapping Name="recipe_0_orders_details">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_orders_details">
+              <MappingFragment StoreEntitySet="recipe_0_orders_details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="line_dd" ColumnName="line_dd" />
+                <ScalarProperty Name="production_order" ColumnName="production_order" />
+                <ScalarProperty Name="process_order_sap" ColumnName="process_order_sap" />
+                <ScalarProperty Name="material_code" ColumnName="material_code" />
+                <ScalarProperty Name="recipe" ColumnName="recipe" />
+                <ScalarProperty Name="activation_date" ColumnName="activation_date" />
+                <ScalarProperty Name="closing_date" ColumnName="closing_date" />
+                <ScalarProperty Name="data_split" ColumnName="data_split" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_out_semi_finished_production">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_out_semi_finished_production">
+              <MappingFragment StoreEntitySet="recipe_0_out_semi_finished_production">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="bigbag_number" ColumnName="bigbag_number" />
+                <ScalarProperty Name="bigbag_filling_time_end" ColumnName="bigbag_filling_time_end" />
+                <ScalarProperty Name="bigbag_filling_duration" ColumnName="bigbag_filling_duration" />
+                <ScalarProperty Name="bigbag_weight" ColumnName="bigbag_weight" />
+                <ScalarProperty Name="efficiency" ColumnName="efficiency" />
+                <ScalarProperty Name="class" ColumnName="class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_out_test_during_production">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_out_test_during_production">
+              <MappingFragment StoreEntitySet="recipe_0_out_test_during_production">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="line_dd" ColumnName="line_dd" />
+                <ScalarProperty Name="process_order" ColumnName="process_order" />
+                <ScalarProperty Name="testing_time" ColumnName="testing_time" />
+                <ScalarProperty Name="moisture" ColumnName="moisture" />
+                <ScalarProperty Name="bulk_density" ColumnName="bulk_density" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_processing_details_bigbag">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_processing_details_bigbag">
+              <MappingFragment StoreEntitySet="recipe_0_processing_details_bigbag">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="bigbag_number" ColumnName="bigbag_number" />
+                <ScalarProperty Name="bigbag_filling_time_end" ColumnName="bigbag_filling_time_end" />
+                <ScalarProperty Name="sifter_speed_nominal_pct" ColumnName="sifter_speed_nominal_pct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_processing_details_dd">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_processing_details_dd">
+              <MappingFragment StoreEntitySet="recipe_0_processing_details_dd">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="testing_time" ColumnName="testing_time" />
+                <ScalarProperty Name="steam_preasure" ColumnName="steam_preasure" />
+                <ScalarProperty Name="dd_speed" ColumnName="dd_speed" />
+                <ScalarProperty Name="temp_out" ColumnName="temp_out" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_processing_details_slurry">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_processing_details_slurry">
+              <MappingFragment StoreEntitySet="recipe_0_processing_details_slurry">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="slurry_process_order" ColumnName="slurry_process_order" />
+                <ScalarProperty Name="slurry_line" ColumnName="slurry_line" />
+                <ScalarProperty Name="slurry_start_time" ColumnName="slurry_start_time" />
+                <ScalarProperty Name="water_pct" ColumnName="water_pct" />
+                <ScalarProperty Name="water_correction" ColumnName="water_correction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_raw_material_in">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_raw_material_in">
+              <MappingFragment StoreEntitySet="recipe_0_raw_material_in">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="process_order_sap3" ColumnName="process_order_sap3" />
+                <ScalarProperty Name="fat_pct" ColumnName="fat_pct" />
+                <ScalarProperty Name="particles_grp1" ColumnName="particles_grp1" />
+                <ScalarProperty Name="particles_grp2" ColumnName="particles_grp2" />
+                <ScalarProperty Name="particles_grp3" ColumnName="particles_grp3" />
+                <ScalarProperty Name="moisture" ColumnName="moisture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_0_raw_material_used">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_0_raw_material_used">
+              <MappingFragment StoreEntitySet="recipe_0_raw_material_used">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="material_code_2" ColumnName="material_code_2" />
+                <ScalarProperty Name="process_order_sap3" ColumnName="process_order_sap3" />
+                <ScalarProperty Name="usage_pct" ColumnName="usage_pct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_orders_details">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_orders_details">
+              <MappingFragment StoreEntitySet="recipe_1_orders_details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="production_order" ColumnName="production_order" />
+                <ScalarProperty Name="material_code" ColumnName="material_code" />
+                <ScalarProperty Name="recipe" ColumnName="recipe" />
+                <ScalarProperty Name="line_dd" ColumnName="line_dd" />
+                <ScalarProperty Name="data_split" ColumnName="data_split" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_out_semi_finished_production">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_out_semi_finished_production">
+              <MappingFragment StoreEntitySet="recipe_1_out_semi_finished_production">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="bigbag_number" ColumnName="bigbag_number" />
+                <ScalarProperty Name="bigbag_filling_time_end" ColumnName="bigbag_filling_time_end" />
+                <ScalarProperty Name="bigbag_filling_duration" ColumnName="bigbag_filling_duration" />
+                <ScalarProperty Name="bigbag_weight" ColumnName="bigbag_weight" />
+                <ScalarProperty Name="efficiency" ColumnName="efficiency" />
+                <ScalarProperty Name="class" ColumnName="class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_out_test_during_production">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_out_test_during_production">
+              <MappingFragment StoreEntitySet="recipe_1_out_test_during_production">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="line_dd" ColumnName="line_dd" />
+                <ScalarProperty Name="process_order" ColumnName="process_order" />
+                <ScalarProperty Name="testing_time" ColumnName="testing_time" />
+                <ScalarProperty Name="moisture" ColumnName="moisture" />
+                <ScalarProperty Name="bulk_density" ColumnName="bulk_density" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_processing_details_bigbag">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_processing_details_bigbag">
+              <MappingFragment StoreEntitySet="recipe_1_processing_details_bigbag">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="bigbag_number" ColumnName="bigbag_number" />
+                <ScalarProperty Name="bigbag_filling_time_end" ColumnName="bigbag_filling_time_end" />
+                <ScalarProperty Name="sifter_speed_nominal_pct" ColumnName="sifter_speed_nominal_pct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_processing_details_dd">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_processing_details_dd">
+              <MappingFragment StoreEntitySet="recipe_1_processing_details_dd">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="testing_time" ColumnName="testing_time" />
+                <ScalarProperty Name="steam_preasure" ColumnName="steam_preasure" />
+                <ScalarProperty Name="dd_speed" ColumnName="dd_speed" />
+                <ScalarProperty Name="temp_out" ColumnName="temp_out" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_processing_details_slurry">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_processing_details_slurry">
+              <MappingFragment StoreEntitySet="recipe_1_processing_details_slurry">
+                <ScalarProperty Name="orders_details_id" ColumnName="orders_details_id" />
+                <ScalarProperty Name="slurry_process_order" ColumnName="slurry_process_order" />
+                <ScalarProperty Name="slurry_line" ColumnName="slurry_line" />
+                <ScalarProperty Name="slurry_start_time" ColumnName="slurry_start_time" />
+                <ScalarProperty Name="water_pct" ColumnName="water_pct" />
+                <ScalarProperty Name="water_correction" ColumnName="water_correction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_raw_material_in">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_raw_material_in">
+              <MappingFragment StoreEntitySet="recipe_1_raw_material_in">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="process_order_sap" ColumnName="process_order_sap" />
+                <ScalarProperty Name="particles_grp1" ColumnName="particles_grp1" />
+                <ScalarProperty Name="particles_grp2" ColumnName="particles_grp2" />
+                <ScalarProperty Name="particles_grp3" ColumnName="particles_grp3" />
+                <ScalarProperty Name="moisture" ColumnName="moisture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipe_1_raw_material_used">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.recipe_1_raw_material_used">
+              <MappingFragment StoreEntitySet="recipe_1_raw_material_used">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="material_code_2" ColumnName="material_code_2" />
+                <ScalarProperty Name="process_order_sap" ColumnName="process_order_sap" />
+                <ScalarProperty Name="vendor_batch" ColumnName="vendor_batch" />
+                <ScalarProperty Name="usage_pct" ColumnName="usage_pct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results_test_dataset">
+            <EntityTypeMapping TypeName="hackathon_danoneModel.results_test_dataset">
+              <MappingFragment StoreEntitySet="results_test_dataset">
+                <ScalarProperty Name="submission_id" ColumnName="submission_id" />
+                <ScalarProperty Name="recipe" ColumnName="recipe" />
+                <ScalarProperty Name="team_name" ColumnName="team_name" />
+                <ScalarProperty Name="team_id" ColumnName="team_id" />
+                <ScalarProperty Name="github_repository_url" ColumnName="github_repository_url" />
+                <ScalarProperty Name="commit_hash" ColumnName="commit_hash" />
+                <ScalarProperty Name="accuracy" ColumnName="accuracy" />
+                <ScalarProperty Name="RMSE" ColumnName="RMSE" />
+                <ScalarProperty Name="R2" ColumnName="R2" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="last_modified" ColumnName="last_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

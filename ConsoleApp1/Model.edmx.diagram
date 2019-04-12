@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8ad3ccca36c490b86ee7379b7c3b623" Name="Diagram1">
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_orders_details" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_out_semi_finished_production" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_out_test_during_production" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_processing_details_bigbag" Width="1.5" PointX="8" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_processing_details_dd" Width="1.5" PointX="8" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_processing_details_slurry" Width="1.5" PointX="8" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_raw_material_in" Width="1.5" PointX="8" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_0_raw_material_used" Width="1.5" PointX="8" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_orders_details" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_out_semi_finished_production" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_out_test_during_production" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_processing_details_bigbag" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_processing_details_dd" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_processing_details_slurry" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_raw_material_in" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.recipe_1_raw_material_used" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hackathon_danoneModel.results_test_dataset" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_out_semi_finished_production" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_out_test_during_production" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_processing_details_bigbag" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_processing_details_dd" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_processing_details_slurry" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_raw_material_used_id" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.FK_recipe_0_raw_material_in_recipe_0_orders_details_id" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_out_semi_finished_production" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_out_test_during_production" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_processing_details_bigbag" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_processing_details_dd" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_processing_details_slurry" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.FK_recipe_1_raw_material_in_recipe_1_orders_details_id" ManuallyRouted="false" />
+        <AssociationConnector Association="hackathon_danoneModel.fk_recipe_1_raw_material_used_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
