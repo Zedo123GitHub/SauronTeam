@@ -128,6 +128,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Learn2.cs" />
     <Compile Include="Learn.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -199,6 +200,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TestData.cs" />
+    <Compile Include="TestData2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -207,10 +209,13 @@
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Data\DataForLearn.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\taxi-fare-train.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\TestData.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
