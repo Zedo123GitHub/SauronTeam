@@ -10,73 +10,62 @@ namespace ConsoleApp1
 	class Recipe
 	{
 		[LoadColumn(0)]
-		public string line_dd;
+		public float bigbag_filling_duration;
 		[LoadColumn(1)]
-		public string production_order;
+		public float bigbag_weight;
 		[LoadColumn(2)]
-		public string process_order_sap;
+		public float efficiency;
 		[LoadColumn(3)]
-		public string material_code;
+		public float sifter_speed_nominal_pct;
 		[LoadColumn(4)]
-		public string recipe;
+		public float steam_preasure;
 		[LoadColumn(5)]
-		public string activation_date;
+		public float dd_speed;
 		[LoadColumn(6)]
-		public string closing_date;
+		public float temp_out;
 		[LoadColumn(7)]
-		public string bigbag_number;
+		public float moisture;
 		[LoadColumn(8)]
-		public string bigbag_filling_time_end;
+		public float bulk_density;
 		[LoadColumn(9)]
-		public string bigbag_filling_duration;
+		public float water_pct;
 		[LoadColumn(10)]
-		public string bigbag_weight;
+		public float water_correction;
 		[LoadColumn(11)]
-		public string efficiency;
+		public float steam_pressure_at_the_inlet_of_regulation_unit;
 		[LoadColumn(12)]
-		public string bbigbag_filling_time_end;
+		public float product_temperature_at_the_outlet_of_JetCooker;
 		[LoadColumn(13)]
-		public string sifter_speed_nominal_pct;
+		public float setpoint_of_steam_pressure_at_the_DD_inlet;
 		[LoadColumn(14)]
-		public string slurry_process_order;
+		public float condensate_temperature_at_DD_outlet;
 		[LoadColumn(15)]
-		public string slurry_line;
+		public float product_temperature_at_the_inlet;
 		[LoadColumn(16)]
-		public string slurry_start_time;
+		public float setpoint_of_product_temperature;
 		[LoadColumn(17)]
-		public string water_pct;
+		public float product_at_the_outlet_of_JetCooker;
 		[LoadColumn(18)]
-		public string water_correction;
+		public float steam_pressure_at_the_inlet_of_JetCooker;
 		[LoadColumn(19)]
-		public string testing_time;
+		public float steam_pressure_at_the_outlet_of_regulation_unit;
 		[LoadColumn(20)]
-		public string steam_preasure;
+		public float product_temperature_at_the_outlet_of_product;
 		[LoadColumn(21)]
-		public string dd_speed;
+		public float steam_pressure_at_DD_inlet;
 		[LoadColumn(22)]
-		public string temp_out;
+		public float fat_pct;
 		[LoadColumn(23)]
-		public string fat_pct;
+		public float particles_grp1;
 		[LoadColumn(24)]
-		public string particles_grp1;
+		public float particles_grp2;
 		[LoadColumn(25)]
-		public string particles_grp2;
+		public float particles_grp3;
 		[LoadColumn(26)]
-		public string particles_grp3;
+		public float moisture_in;
 		[LoadColumn(27)]
-		public string moisture_in;
-		[LoadColumn(28)]
-		public string material_code_2;
-		[LoadColumn(29)]
-		public string process_order_sap3;
-		[LoadColumn(30)]
-		public string usage_pct;
-		[LoadColumn(31)]
-		public string vendor_batch;
-		[LoadColumn(32)]
-		public string moisture;
-		[LoadColumn(33)]
-		public string bulk_density;
+		public float usage_pct;
+
 	}
 
 	class OutputPrediction

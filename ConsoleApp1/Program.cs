@@ -10,7 +10,7 @@ namespace ConsoleApp1
 	{
 		static void Main(string[] args)
 		{
-            Learn2.InitiateLearn();
+            Learn.InitiateLearn();
 
         }
 	}
