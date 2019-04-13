@@ -9,103 +9,82 @@ namespace ConsoleApp1
 {
 	class Recipe
 	{
-		[LoadColumn(xxx)]
-		public string line_dd;
-		[LoadColumn(xxx)]
-		public string production_order;
-		[LoadColumn(xxx)]
-		public string process_order_sap;
-		[LoadColumn(xxx)]
-		public string material_code;
-		[LoadColumn(xxx)]
-		public string recipe;
-		[LoadColumn(xxx)]
-		public string activation_date;
-		[LoadColumn(xxx)]
-		public string closing_date;
-		[LoadColumn(xxx)]
-		public string bigbag_number;
-		[LoadColumn(xxx)]
-		public string bigbag_filling_time_end;
-		[LoadColumn(xxx)]
-		public string bigbag_filling_duration;
-		[LoadColumn(xxx)]
-		public string bigbag_weight;
-		[LoadColumn(xxx)]
-		public string efficiency;
-		[LoadColumn(xxx)]
-		public string bbigbag_filling_time_end;
-		[LoadColumn(xxx)]
-		public string sifter_speed_nominal_pct;
-		[LoadColumn(xxx)]
-		public string slurry_process_order;
-		[LoadColumn(xxx)]
-		public string slurry_line;
-		[LoadColumn(xxx)]
-		public string slurry_start_time;
-		[LoadColumn(xxx)]
-		public string water_pct;
-		[LoadColumn(xxx)]
-		public string water_correction;
-		[LoadColumn(xxx)]
-		public string testing_time;
-		[LoadColumn(xxx)]
-		public string steam_preasure;
-		[LoadColumn(xxx)]
-		public string dd_speed;
-		[LoadColumn(xxx)]
-		public string temp_out;
-		[LoadColumn(xxx)]
-		public string fat_pct;
-		[LoadColumn(xxx)]
-		public string particles_grp1;
-		[LoadColumn(xxx)]
-		public string particles_grp2;
-		[LoadColumn(xxx)]
-		public string particles_grp3;
-		[LoadColumn(xxx)]
-		public string moisture_in;
-		[LoadColumn(xxx)]
-		public string material_code_2;
-		[LoadColumn(xxx)]
-		public string process_order_sap3;
-		[LoadColumn(xxx)]
-		public string usage_pct;
-		[LoadColumn(xxx)]
-		public string vendor_batch;
-		[LoadColumn(xxx)]
-		public string moisture;
-		[LoadColumn(xxx)]
-		public string bulk_density;
 		[LoadColumn(0)]
-
-		public string Test1;
-
+		public string line_dd;
 		[LoadColumn(1)]
-		public string Test2;
-
+		public string production_order;
 		[LoadColumn(2)]
-		public float Test3;
-
+		public string process_order_sap;
 		[LoadColumn(3)]
-		public float Test4;
-
+		public string material_code;
 		[LoadColumn(4)]
-		public float Test5;
-
+		public string recipe;
 		[LoadColumn(5)]
-		public string BulkDensity;
-
+		public string activation_date;
 		[LoadColumn(6)]
-		public float Moisture;
+		public string closing_date;
+		[LoadColumn(7)]
+		public string bigbag_number;
+		[LoadColumn(8)]
+		public string bigbag_filling_time_end;
+		[LoadColumn(9)]
+		public string bigbag_filling_duration;
+		[LoadColumn(10)]
+		public string bigbag_weight;
+		[LoadColumn(11)]
+		public string efficiency;
+		[LoadColumn(12)]
+		public string bbigbag_filling_time_end;
+		[LoadColumn(13)]
+		public string sifter_speed_nominal_pct;
+		[LoadColumn(14)]
+		public string slurry_process_order;
+		[LoadColumn(15)]
+		public string slurry_line;
+		[LoadColumn(16)]
+		public string slurry_start_time;
+		[LoadColumn(17)]
+		public string water_pct;
+		[LoadColumn(18)]
+		public string water_correction;
+		[LoadColumn(19)]
+		public string testing_time;
+		[LoadColumn(20)]
+		public string steam_preasure;
+		[LoadColumn(21)]
+		public string dd_speed;
+		[LoadColumn(22)]
+		public string temp_out;
+		[LoadColumn(23)]
+		public string fat_pct;
+		[LoadColumn(24)]
+		public string particles_grp1;
+		[LoadColumn(25)]
+		public string particles_grp2;
+		[LoadColumn(26)]
+		public string particles_grp3;
+		[LoadColumn(27)]
+		public string moisture_in;
+		[LoadColumn(28)]
+		public string material_code_2;
+		[LoadColumn(29)]
+		public string process_order_sap3;
+		[LoadColumn(30)]
+		public string usage_pct;
+		[LoadColumn(31)]
+		public string vendor_batch;
+		[LoadColumn(32)]
+		public string moisture;
+		[LoadColumn(33)]
+		public string bulk_density;
 	}
 
 	class OutputPrediction
 	{
 		[ColumnName("BulkDensity")]
-		public string BulkDensity;
+		public string bulk_density;
 
-		[ColumnName("Moisture")]
-		public float Moisture;
+		//[ColumnName("Moisture")]
+		//public float moisture;
 	}
 }
