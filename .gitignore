@@ -342,3 +342,10 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+ConsoleApp1/Data/old/DataForLearn_m.csv
+ConsoleApp1/Data/old/DataForLearn_db_v2.csv
+ConsoleApp1/Data/old/DataForLearn_db.csv
+ConsoleApp1/Data/old/DataForLearn.csv
+ConsoleApp1/Data/old/taxi-fare-train.csv
+ConsoleApp1/Data/old/TestData.csv
+ConsoleApp1/Data/old/TestDatatekst.txt
