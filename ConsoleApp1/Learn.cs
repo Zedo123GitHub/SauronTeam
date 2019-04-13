@@ -13,9 +13,9 @@ namespace ConsoleApp1
     class Learn
     {
 
-        static readonly string _trainDataPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "DataForLearn.csv");
+        static readonly string _trainDataPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "DataForLearn_db.csv");
        // static readonly string _testDataPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "data-test.csv");
-        static readonly string _modelPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "Model.zip");
+        static readonly string _modelPath = System.IO.Path.Combine(Environment.CurrentDirectory, "Data", "Model1.zip");
 
         public static void InitiateLearn()
         {
@@ -36,7 +36,7 @@ namespace ConsoleApp1
 
             IDataView dataView = mlContext.Data.LoadFromTextFile<Recipe>(dataPath, hasHeader: false, separatorChar: ';');
             var pipeline = mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "bulk_density")
-                           .Append(mlContext.Transforms.Concatenate("Features", "bigbag_filling_duration", "bigbag_weight", "efficiency", "sifter_speed_nominal_pct", "steam_preasure", "dd_speed", "temp_out", "moisture", "water_pct", "water_correction", "steam_pressure_at_the_inlet_of_regulation_unit", "product_temperature_at_the_outlet_of_JetCooker", "setpoint_of_steam_pressure_at_the_DD_inlet", "condensate_temperature_at_DD_outlet", "product_temperature_at_the_inlet", "setpoint_of_product_temperature", "product_at_the_outlet_of_JetCooker", "steam_pressure_at_the_inlet_of_JetCooker", "steam_pressure_at_the_outlet_of_regulation_unit", "product_temperature_at_the_outlet_of_product", "steam_pressure_at_DD_inlet", "fat_pct", "particles_grp1", "particles_grp2", "particles_grp3", "moisture_in", "usage_pct"))
+                           .Append(mlContext.Transforms.Concatenate("Features", "bigbag_filling_duration", "bigbag_weight", "efficiency", "sifter_speed_nominal_pct", "steam_preasure", "dd_speed", "temp_out", "water_pct", "water_correction", "steam_pressure_at_the_inlet_of_regulation_unit", "product_temperature_at_the_outlet_of_JetCooker", "setpoint_of_steam_pressure_at_the_DD_inlet", "condensate_temperature_at_DD_outlet", "product_temperature_at_the_inlet", "setpoint_of_product_temperature", "product_at_the_outlet_of_JetCooker", "steam_pressure_at_the_inlet_of_JetCooker", "steam_pressure_at_the_outlet_of_regulation_unit", "product_temperature_at_the_outlet_of_product", "steam_pressure_at_DD_inlet", "fat_pct", "particles_grp1", "particles_grp2", "particles_grp3", "moisture_in", "usage_pct"))
                            .Append(mlContext.Regression.Trainers.FastTree());
 
             var model = pipeline.Fit(dataView);
@@ -81,8 +81,6 @@ namespace ConsoleApp1
                 steam_preasure = 6.6f,
                 dd_speed = 10,
                 temp_out = 121,
-                moisture = 4.75f,
-                bulk_density = 0,
                 water_pct = 0.66f,
                 water_correction = -40,
                 steam_pressure_at_the_inlet_of_regulation_unit = 6.571f,
@@ -101,7 +99,8 @@ namespace ConsoleApp1
                 particles_grp2 = 0.15f,
                 particles_grp3 = 0,
                 moisture_in = 1.5f,
-                usage_pct = 0.98f
+                usage_pct = 0.98f,
+                bulk_density = 5
 
             };
 

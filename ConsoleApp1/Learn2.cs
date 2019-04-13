@@ -68,7 +68,7 @@ namespace ConsoleApp1
                 TripTime = 1140,
                 TripDistance = 3.75f,
                 PaymentType = "CRD",
-                FareAmount = 0 // To predict. Actual/Observed = 15.5
+                FareAmount = 3 // To predict. Actual/Observed = 15.5
             };
 
             var prediction = predictionFunction.Predict(taxiTripSample);
