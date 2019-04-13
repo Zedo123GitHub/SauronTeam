@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,11 +36,13 @@ namespace ConsoleApp1
 
 		public static ITransformer Train(MLContext mlContext, string dataPath)
 		{
-
+			//		public float efficiency, moisture, bulk_density;
+			var column = "efficiency";
+			Console.WriteLine();
 			IDataView dataView = mlContext.Data.LoadFromTextFile<Recipe>(dataPath, hasHeader: false, separatorChar: ';');
 			var pipeline = mlContext.Transforms
-							//		public float efficiency, moisture, bulk_density;
-							.CopyColumns(outputColumnName: "Label", inputColumnName: "efficiency")
+							
+							.CopyColumns(outputColumnName: "Label", inputColumnName: column)
 						   .Append(mlContext.Transforms.Concatenate("Features", "bigbag_filling_duration", "bigbag_weight", "sifter_speed_nominal_pct", "steam_preasure", "dd_speed", "temp_out", "water_pct", "water_correction", "steam_pressure_at_the_inlet_of_regulation_unit", "product_temperature_at_the_outlet_of_JetCooker", "setpoint_of_steam_pressure_at_the_DD_inlet", "condensate_temperature_at_DD_outlet", "product_temperature_at_the_inlet", "setpoint_of_product_temperature", "product_at_the_outlet_of_JetCooker", "steam_pressure_at_the_inlet_of_JetCooker", "steam_pressure_at_the_outlet_of_regulation_unit", "product_temperature_at_the_outlet_of_product", "steam_pressure_at_DD_inlet", "fat_pct", "particles_grp1", "particles_grp2", "particles_grp3", "moisture_in", "usage_pct"))
 						   .Append(mlContext.Regression.Trainers.FastTree());
 
@@ -85,7 +88,7 @@ namespace ConsoleApp1
 				dd_speed = 0,
 				temp_out = 0,
 				water_pct = 0.66f,
-				water_correction = -20,
+				water_correction = -45,
 				steam_pressure_at_the_inlet_of_regulation_unit = 0,
 				product_temperature_at_the_outlet_of_JetCooker = 0,
 				setpoint_of_steam_pressure_at_the_DD_inlet = 0,
@@ -99,16 +102,17 @@ namespace ConsoleApp1
 				steam_pressure_at_DD_inlet = 0,
 
 				fat_pct = 0,
-				particles_grp1 = 0.591f,
-				particles_grp2 = 0.409f,
+				particles_grp1 = 0.88f,
+				particles_grp2 = 0.12f,
 				particles_grp3 = 0,
-				moisture_in = 12.4f,
-				usage_pct = 0.119f,
+				moisture_in = 12.9f,
+				usage_pct = 0.273f, ///11
 
-				efficiency = 0,		//	100
-				moisture = 0,		//	4,81
-				bulk_density = 0	//	250
+				efficiency = 0,     //	100
+				moisture = 0,       //	4,81
+				bulk_density = 0    //	250
 			};
+
 
 			var prediction = predictionFunction.Predict(dataSample);
 
