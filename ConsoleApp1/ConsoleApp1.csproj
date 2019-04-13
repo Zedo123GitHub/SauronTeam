@@ -242,6 +242,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Prezentacja\Projekt programu ML.pptx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model.Context.tt">
