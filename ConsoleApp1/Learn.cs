@@ -30,7 +30,7 @@ namespace ConsoleApp1
             MLContext mlContext = new MLContext(seed: 0);
             var model = Train(mlContext, _trainDataPath);
 
-            //Evaluate(mlContext, model);
+            Evaluate(mlContext, model);
 
             TestSinglePrediction(mlContext);
             Console.WriteLine("===== Zakończono uczenie się =====");
@@ -43,7 +43,7 @@ namespace ConsoleApp1
 
             IDataView dataView = mlContext.Data.LoadFromTextFile<TestData>(dataPath, hasHeader: false, separatorChar: ';');
             var pipeline = mlContext.Transforms.CopyColumns(outputColumnName: "Label", inputColumnName: "test3")
-                           .Append(mlContext.Transforms.Concatenate("test1", "test2"))
+                           .Append(mlContext.Transforms.Concatenate("Features", "test1", "test2"))
                            .Append(mlContext.Regression.Trainers.FastTree());
 
             var model = pipeline.Fit(dataView);
@@ -59,6 +59,13 @@ namespace ConsoleApp1
             Console.WriteLine("The model is saved to {0}", _modelPath);
         }
 
+        private static void Evaluate(MLContext mlContext, ITransformer model)
+        {
+            IDataView dataView = mlContext.Data.LoadFromTextFile<TestData>(_trainDataPath, hasHeader: false, separatorChar: ';');
+            var predictions = model.Transform(dataView);
+            var metrics = mlContext.Regression.Evaluate(predictions, "Label", "Score");
+        }
+
         private static void TestSinglePrediction(MLContext mlContext)
         {
             ITransformer loadedModel;
@@ -71,8 +78,8 @@ namespace ConsoleApp1
 
             var dataSample = new TestData()
             {
-                test1 = 0,
-                test2 = 2,
+                test1 = 1,
+                test2 = 1,
                 test3 = 0
             };
 
