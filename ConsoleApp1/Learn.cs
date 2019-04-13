@@ -34,6 +34,7 @@ namespace ConsoleApp1
 
             TestSinglePrediction(mlContext);
             Console.WriteLine("===== Zakończono uczenie się =====");
+            Console.ReadLine();
         }
 
         
@@ -60,6 +61,27 @@ namespace ConsoleApp1
 
         private static void TestSinglePrediction(MLContext mlContext)
         {
+            ITransformer loadedModel;
+            using (var stream = new FileStream(_modelPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                loadedModel = mlContext.Model.Load(stream);
+            }
+
+            var predictionFunction = loadedModel.CreatePredictionEngine<TestData, DataPrediction>(mlContext);
+
+            var dataSample = new TestData()
+            {
+                test1 = 0,
+                test2 = 2,
+                test3 = 0
+            };
+
+            var prediction = predictionFunction.Predict(dataSample);
+
+            Console.WriteLine($"**********************************************************************");
+            Console.WriteLine($"Predicted : {prediction.test3:0.####}");
+            Console.WriteLine($"**********************************************************************");
+
 
         }
 
