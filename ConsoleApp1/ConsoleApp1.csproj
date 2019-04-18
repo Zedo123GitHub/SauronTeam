@@ -245,6 +245,7 @@
     <None Include="Prezentacja\Projekt programu ML.pptx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\query.sql" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
